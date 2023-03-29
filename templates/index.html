@@ -9,9 +9,14 @@
     <title>Todo App</title>
 </head>
 <body>
-    <div style="margin-top: 100px;" class="container">
-        <h3>Todo APP</h3>
-        <hr>
+  <div align="center" style="margin-top:50px;">
+    <img style="text-align: center;" src="https://cdn-icons-png.flaticon.com/128/9802/9802618.png" alt="logo" style="width:250px;height:250px;">
+    <h3 style="text-align: center;">Todo APP</h3>
+    <hr>
+  </div>
+    
+    <div class="container">
+       
     <form action="/add" method="post">
         <div style="margin-left: 70px; margin-right: 70px;" class="form-group">
             <label for="formGroupExampleInput">Hedef Listesi</label>
@@ -22,12 +27,12 @@
     </form> 
     {% if todos == [] %}
     <div class="alert alert-secondary" role="alert">
-            Herhangi bir hedefiniz bulunmuyor... <a href="#" class="alert-link">Hedefsiz insan rotasız gemiye benzer</a>
+            Herhangi bir hedefiniz bulunmuyor... <span style="color: blueviolet;">Hedefsiz insan rotasız gemiye benzer, hemen bir hedef belirle!</span>
     </div>
     {% else %}
-    <table class="table">
-            <thead>
-              <tr style="background-color: rgb(38, 103, 107); color: white">
+    <table  class="table">
+            <thead style="border-radius: 10px;">
+              <tr  style="background-color: #3c3e42; color: white">
                 <th scope="col">id</th>
                 <th scope="col">Hedefin Konusu</th>
                 <th scope="col">Hedefin Durumu</th>
@@ -41,12 +46,17 @@
                     <th scope="row">{{todo.id}}</th>
                     <td>{{todo.title}}</td>
                     {% if todo.complete == False %}
-                    <td>Tamamlanmadı</td>
+                    <td style="color: red">Tamamlanmadı</td>
                     {% else %}
-                    <td>Tamamlandı</td>
+                    <td style="color: green">Tamamlandı</td>
                     {% endif %}
                     
-                    <td><a href="/complete/{{todo.id}}" class ="btn btn-success">Tamamla</a></td>
+                    
+                    {% if todo.complete == False %}
+                    <td><a href="/complete/{{todo.id}}" class ="btn btn-danger">Tamamla</a></td></td>
+                    {% else %}
+                    <td><a href="/complete/{{todo.id}}" class ="btn btn-success">Tamamlandı</a></td></td>
+                    {% endif %}
                     <td><a href="/delete/{{todo.id}}" class ="btn btn-danger">Sil</a></td>
                     
                 </tr>
