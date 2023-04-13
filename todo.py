@@ -20,9 +20,9 @@ def index():
 def completeTodo(id):
     todo = Todo.query.filter_by(id = id).first()
     todo.complete = not todo.complete
+    todo.completed_at = datetime.now() #görevin tamamlanma tarihini gösterir
     db.session.commit()
     return redirect(url_for("index"))
-
 
 @app.route("/add", methods= ["POST"])
 def addTodo():
@@ -31,9 +31,6 @@ def addTodo():
     db.session.add(newTodo)
     db.session.commit()
     return redirect(url_for("index"))
-
-
-
 @app.route("/delete/<string:id>")
 def deleteTodo(id):
     todo = Todo.query.filter_by(id = id).first()
@@ -41,10 +38,15 @@ def deleteTodo(id):
     db.session.commit()
     return redirect(url_for("index"))
 
+now = datetime.now()
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80))
     complete = db.Column(db.Boolean)
+    formatted_date = db.Column(db.DateTime, default=datetime.now)
+    created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
+    completed_at = db.Column(db.DateTime)
+
 
 with app.app_context():
     db.create_all()

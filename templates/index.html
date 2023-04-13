@@ -5,24 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/templates/todo.css">
     <title>Todo App</title>
 </head>
-<body>
-  <div align="center" style="margin-top:50px;">
-    <img style="text-align: center;" src="https://cdn-icons-png.flaticon.com/128/3082/3082854.png" alt="logo" style="width:250px;height:250px;">
+<body style="background-color: #ffffff;"> 
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding-top: 30px;">
+    <h3><a style="color: #0e59e4;" class="navbar-brand" href="#">Başlamak Bitirmenin Yarısıdır</a></h3>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a  class="nav-link" href="https://github.com/yeniturkalp"><i class="fa-brands fa-github fa-xl" style="color: #1E3050;"></i> GitHub</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="https://www.instagram.com/alpaslanyeniturk/"> <i class="fa-brands fa-instagram fa-xl" style="color: #1E3050;"></i> İnstagram</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="https://www.linkedin.com/in/alpaslan-yenit%C3%BCrk-2485b01ab/"><i class="fa-brands fa-linkedin fa-xl" style="color:#1E3050;"></i> LinkedIn</a>
+        </li>
+      </ul>
+      <a class="nav-link" href="https://github.com/yeniturkalp"><i class="fa-brands fa-whatsapp fa-xl" style="color: rgb(14, 175, 14);"></i> 05436397507</a>
+    </div>
+  </nav> 
+  <!-- Dropdowns 
+  <div class="btn-group" style="margin: 10px;">
+    <button type="button" class="btn btn-outline-danger btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Geleceği Yakala
+    </button>
+    <div class="dropdown-menu">
+     <a  class="dropdown-item" href="https://github.com/yeniturkalp"><i class="fa-brands fa-github fa-xl" style="color: #1E3050;"></i> GitHub</a>
+     <a class="dropdown-item" href="https://www.instagram.com/alpaslanyeniturk/"> <i class="fa-brands fa-instagram fa-xl" style="color: #1E3050;"></i> İnstagram</a>
+     <a class="dropdown-item" href="https://www.linkedin.com/in/alpaslan-yenit%C3%BCrk-2485b01ab/"><i class="fa-brands fa-linkedin fa-xl" style="color:#1E3050;"></i> LinkedIn</a>
+     <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#"><i class="fa-brands fa-whatsapp fa-xl" style="color: rgb(14, 175, 14);"></i> 05xxxxxxxxx</a>
+    </div>
+  </div> -->
+
+
+  <div align="center" style="margin-top:50px; background-color: #ffffff;">
+    <img style="text-align: center;" src="https://cdn-icons-png.flaticon.com/128/3082/3082854.png" alt="logo" style="width:100px;height:100px;">
     <h3 style="text-align: center;">Todo APP</h3>
-    <hr>
-  </div>
     
-    <div class="container">
-       
+  </div>
+    <div class="container">   
     <form action="/add" method="post">
-        <div style="margin-left: 70px; margin-right: 70px;" class="form-group">
+        <div  style="margin-left: 70px; margin-right: 70px;" class="form-group">
             <label for="formGroupExampleInput">Hedef Listesi</label>
             <input type="text" class="form-control" name="title" id="formGroupExampleInput" placeholder="Hedefinizi Girinizi.."><br>
-            <button type="submit" class="btn btn-info"> Hedefi Ekle </button>
-        <small id="textHelp" class="form-text text-muted"> <a href="" class="alert-link">Başlamak, bitirmenin yarısıdır</a></small>
+            <button type="submit" class="btn btn-outline-primary"> Hedefi Ekle </button>
         </div>
     </form> 
     {% if todos == [] %}
@@ -30,46 +65,52 @@
             Hedefsizsin kanka... <span style="color: blueviolet;">Unutma hedefsiz insan rotasız gemiye benzer, hemen bir hedef belirle!</span>
     </div>
     {% else %}
-    <table  class="table">
+    <table class="table">
             <thead>
-              <tr style="background-color: #3c3e42; border-radius: 10px; color: white">
-                <th scope="col">id</th>
-                <th scope="col">Hedefin Konusu</th>
-                <th scope="col">Hedefin Durumu</th>
-                <th scope="col">Hedefin Durumunu Güncelle</th>
+              <tr style="background-color: #ffffff; border-radius: 10px; color: rgb(0, 0, 0)">
+                <th scope="col"><i class="fa-solid fa-caret-down fa-xl"></i> id</th>
+                <th scope="col"> <i class="fa-solid fa-spell-check fa-xl"></i>  Konusu</th>
+                <th scope="col"> <i class="fa-solid fa-calendar-days fa-xl"></i> Eklenme Tarihi</th>
+                <th scope="col"> <i class="fa-solid fa-calendar-check fa-xl"></i> Tamamlanma Tarihi</th>
+                <th scope="col"><i class="fa-solid fa-list-check fa-xl"></i> Durumu</th>
+                <th scope="col"><i class="fa-solid fa-check-double fa-xl"></i> Güncelle</th>
                 <th scope="col">Hedefi Sil</th>
               </tr>
             </thead>
+           
             <tbody>
               {% for todo in todos %}
               <tr>
                     <th scope="row">{{todo.id}}</th>
                     <td>{{todo.title}}</td>
+                    <td>{{todo.formatted_date}}</td>
+
+                    <!--Hedefin Tamamlanma Durumunda Tarihi Gösterir-->
+                    {% if todo.complete == False %}
+                    <td style="color: red">Bekliyor</td>
+                    {% else %}
+                    <td style="color:  #127357;"> {{ todo.completed_at }}</td>
+                    {% endif %}
+
                     {% if todo.complete == False %}
                     <td style="color: red">Tamamlanmadı</td>
                     {% else %}
-                    <td style="color: green"><del>Tamamlandı</del></td>
+                    <td style="color: #127357"><del>Tamamlandı</del></td>
                     {% endif %}
-                    
-                    
+
+                    <!--Tamamlama butonları-->
                     {% if todo.complete == False %}
-                    <td><a href="/complete/{{todo.id}}" class ="btn btn-danger">Tamamla</a></td></td>
+                    <td><a href="/complete/{{todo.id}}" class ="btn btn-danger">Tamamla</a></td>
                     {% else %}                    
-                     <td><a href="/complete/{{todo.id}}" class ="btn btn-success"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
-                      <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"></path>
-                      </svg>
-                      <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"></path>Tamamlandı</a> 
-                    </td>
-                     
+                    <td><a href="/complete/{{todo.id}}" class ="btn btn-success"><i class="fa-sharp fa-solid fa-check"></i></a> </td>
                     {% endif %}
-                    <td><a href="/delete/{{todo.id}}" class ="btn btn-danger">Sil</a></td>
-                    
+                    <td><a href="/delete/{{todo.id}}" class ="btn btn-danger"><i class="fa-solid fa-trash"></i></a></td>
                 </tr>
               {% endfor %}
             </tbody>
           </table>
 
-        {% endif %}
+        {% endif %}   
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
